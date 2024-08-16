@@ -1,6 +1,5 @@
-// app/api/register/route.ts
-
 import { auth } from '@/app/utils';
+import { AxiosError } from 'axios';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
@@ -18,7 +17,7 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ uid: userRecord.uid, email: userRecord.email }, { status: 201 });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error creating new user:', error);
     return NextResponse.json({ message: 'Error creating new user', error: error.message }, { status: 500 });
   }
