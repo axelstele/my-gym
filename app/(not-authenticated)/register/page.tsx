@@ -2,65 +2,46 @@
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { TextField, Button, Typography, Container } from '@mui/material';
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { initializeApp } from 'firebase/app';
-
-const firebaseConfig = {
-
-  apiKey: "AIzaSyDd2xKm6gosNLLSt-LJK4b8clNx6vT96Bs",
-
-  authDomain: "my-gym-2a748.firebaseapp.com",
-
-  projectId: "my-gym-2a748",
-
-  storageBucket: "my-gym-2a748.appspot.com",
-
-  messagingSenderId: "87257846453",
-
-  appId: "1:87257846453:web:0091552c393d7c4fa864fc",
-
-  measurementId: "G-C7LCZEDCRE"
-
-};
-const app = initializeApp(firebaseConfig);
-
-const auth = getAuth(app);
+import { useState } from 'react';
 
 interface IFormInput {
   email: string;
   password: string;
+  firstName: string;
+  lastName: string;
 }
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-
-  async function login(email: string, password: string) {
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const idToken = await userCredential.user.getIdToken();
-
-      // Enviar idToken al backend para cualquier validación adicional si es necesario
-      return { idToken, uid: userCredential.user.uid };
-    } catch (error) {
-      console.error('Error logging in user:', error);
-      throw new Error('Invalid email or password');
-    }
-  }
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     setLoading(true);
     setErrorMessage(null);
 
     try {
-      const result = await login(data.email, data.password);
-      console.log('result', result);
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+
+      const responseData = await response.json();
+      console.log('User registered:', responseData);
+
+      // Redirect to the success page
+      router.push('/home'); // Change this to the desired page
     } catch (error: any) {
-      console.error('Error logging in:', error);
+      console.error('Error registering user:', error);
       setErrorMessage(error.message || 'An error occurred');
     } finally {
       setLoading(false);
@@ -70,9 +51,25 @@ const LoginPage = () => {
   return (
     <Container maxWidth="xs">
       <Typography variant="h4" gutterBottom>
-        Login
+        Register
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <TextField
+          fullWidth
+          label="Nombre"
+          {...register('firstName', { required: 'Name is required' })}
+          margin="normal"
+          error={!!errors.firstName}
+          helperText={errors.firstName?.message}
+        />
+        <TextField
+          fullWidth
+          label="Apellido"
+          {...register('lastName', { required: 'Surname is required' })}
+          margin="normal"
+          error={!!errors.lastName}
+          helperText={errors.lastName?.message}
+        />
         <TextField
           fullWidth
           label="Email"
@@ -84,7 +81,7 @@ const LoginPage = () => {
         />
         <TextField
           fullWidth
-          label="Password"
+          label="Contraseña"
           type="password"
           {...register('password', { required: 'Password is required' })}
           margin="normal"
@@ -99,11 +96,11 @@ const LoginPage = () => {
           disabled={loading}
           fullWidth
         >
-          {loading ? 'Logging in...' : 'Login'}
+          {loading ? 'Registering...' : 'Register'}
         </Button>
       </form>
     </Container>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

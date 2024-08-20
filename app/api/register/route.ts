@@ -1,17 +1,13 @@
-import { auth } from '@/app/utils';
-import { AxiosError } from 'axios';
+import { adminAuth } from '@/app/utils';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, password } = await req.json();
-
-    if (!email || !password) {
-      return NextResponse.json({ message: 'Email and password are required' }, { status: 400 });
-    }
+    const { firstName, lastName, email, password } = await req.json();
 
     // Crea un nuevo usuario con Firebase Authentication
-    const userRecord = await auth.createUser({
+    const userRecord = await adminAuth.createUser({
+      displayName: [firstName, lastName].join(' '),
       email,
       password,
     });
