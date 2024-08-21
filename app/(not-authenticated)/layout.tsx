@@ -4,10 +4,8 @@ import { Container, Stack, styled } from '@mui/material';
 import { NotAuthenticatedAppBar } from '@/app/components';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
-  display: 'flex',
   maxWidth: '100vw !important',
   padding: '0 !important',
-  minHeight: `calc(100vh - ${theme.spacing(8)})`,
 }));
 
 export default function Layout({
@@ -16,13 +14,11 @@ export default function Layout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <Stack height={'100%'} maxWidth={'100vw'} p={0}>
       <NotAuthenticatedAppBar />
       <StyledContainer>
-        <Stack flexGrow={1}>
-          {children}
-        </Stack>
+        {children}
       </StyledContainer>
-    </>
+    </Stack>
   );
 }

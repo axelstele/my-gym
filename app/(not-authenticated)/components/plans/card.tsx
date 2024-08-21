@@ -1,3 +1,4 @@
+import { phoneNumber } from "@/app/constants";
 import { useIsMobile } from "@/app/hooks";
 import { Stack, StackProps, Typography } from "@mui/material"
 import styled from "styled-components"
@@ -16,9 +17,6 @@ const StyledStack = styled(Stack)<CustomStack>(({ $bgImg }) => ({
   cursor: 'pointer'
 }));
 
-const phoneNumber = '+542914602205';
-
-
 export const Card = ({ title, bgImg }: Props) => {
   const isMobile = useIsMobile();
 
@@ -29,7 +27,13 @@ export const Card = ({ title, bgImg }: Props) => {
   };
 
   return (
-    <StyledStack height={'100%'} alignItems={'center'} justifyContent={'center'} $bgImg={bgImg} onClick={() => handleConsultClick(title)}>
+    <StyledStack
+      height={isMobile ? 300 : 500}
+      alignItems={'center'}
+      justifyContent={'center'}
+      $bgImg={bgImg}
+      onClick={() => handleConsultClick(title)}
+    >
       <Typography variant={isMobile ? 'h5' : 'h4'} fontStyle={'italic'} color={'white'} fontWeight={600} textAlign={'center'}>
         {title}
       </Typography>

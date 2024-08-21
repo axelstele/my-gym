@@ -1,23 +1,34 @@
-import { AppBar, Button, styled, Toolbar, Typography } from "@mui/material";
+import { AppBar, Button, ButtonProps, styled, Toolbar } from "@mui/material";
 import { useIsMobile } from '@/app/hooks';
 import { DesktopLinks, MobileLinks } from '@/app/components';
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-const StyledToolbar = styled(Toolbar)`
-  justify-content: space-between;
-`;
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  justifyContent: 'space-between',
+
+  paddingLeft: theme.spacing(8),
+  paddingRight: theme.spacing(8),
+
+  [theme.breakpoints.down('sm')]: {
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+  },
+}));
+
+
+const StyledButton = styled(Button) <ButtonProps>`
+  padding: 0;
+`
 
 export const NotAuthenticatedAppBar = () => {
   const isMobile = useIsMobile();
-  const router = useRouter();
 
   return (
-    <AppBar position="static">
+    <AppBar position='sticky'>
       <StyledToolbar>
-        <Button component={Link} href="/">
+        <StyledButton component={Link} href="/">
           MAYFITCOACH
-        </Button>
+        </StyledButton>
         {isMobile ? (
           <MobileLinks />
         ) : (

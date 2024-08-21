@@ -1,24 +1,32 @@
-import { Button, Stack } from "@mui/material"
+import { Button, ButtonProps, Stack } from "@mui/material"
 import Link from "next/link"
+import styled from "styled-components"
+
+const StyledButton = styled(Button)<ButtonProps>`
+  padding: 0;
+`
 
 export function DesktopLinks() {
   return (
     <Stack direction="row" spacing={2}>
-      <Button component={Link} href="/">
+      <StyledButton href="/#home">
         Home
-      </Button>
-      <Button component={Link} href="/plans">
-        Planes
-      </Button>
-      <Button component={Link} href="/about-me">
+      </StyledButton>
+      <StyledButton href="/#about-me">
         Sobre mí
-      </Button>
-      <Button component={Link} href="/contact">
-        Contact
-      </Button>
-      <Button component={Link} href="/login" >
-        Iniciar sesión
-      </Button>
+      </StyledButton>
+      <StyledButton href="/#plans">
+        Planes
+      </StyledButton>
+      <StyledButton href="/#my-students">
+        Mis alumnos
+      </StyledButton>
+      <StyledButton href="#contact">
+        Contacto
+      </StyledButton>
+      <StyledButton component={Link} href="/login" >
+        Acceso alumnos
+      </StyledButton>
     </Stack>
   )
 }

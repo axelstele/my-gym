@@ -5,12 +5,15 @@ import { Box, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
 
-export default function AboutMePage() {
+export function AboutMe() {
   const theme = useTheme();
   const isMobile = useIsMobile();
 
   return (
-    <Box p={isMobile ? 2 : 8}>
+    <Box
+      id='about-me'
+      p={isMobile ? 2 : 8}
+    >
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
           <Typography color={theme.palette.secondary.main} variant={isMobile ? 'h4' : 'h2'} fontWeight={600} fontStyle={'italic'} gutterBottom>

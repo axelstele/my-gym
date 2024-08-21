@@ -4,6 +4,11 @@ import { IconButton, Menu, MenuItem } from "@mui/material"
 import { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from "next/link";
+import styled from "styled-components";
+
+const StyledIconButton = styled(IconButton)`
+  padding: 0;
+`
 
 export function MobileLinks() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -20,14 +25,14 @@ export function MobileLinks() {
 
   return (
     <>
-      <IconButton
+      <StyledIconButton
         edge="start"
         color="inherit"
         aria-label="menu"
         onClick={handleMenu}
       >
         <MenuIcon />
-      </IconButton>
+      </StyledIconButton>
       <Menu
         anchorEl={anchorEl}
         open={open}
@@ -43,10 +48,10 @@ export function MobileLinks() {
           Sobre mí
         </MenuItem>
         <MenuItem onClick={handleClose} component={Link} href="/contact">
-          Contact
+          Contacto
         </MenuItem>
         <MenuItem onClick={handleClose} component={Link} href="/login">
-          Iniciar sesión
+          Acceso alumnos
         </MenuItem>
       </Menu>
     </>

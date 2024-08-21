@@ -2,6 +2,8 @@
 
 import './globals.css';
 import 'react-toastify/dist/ReactToastify.css';
+import "react-multi-carousel/lib/styles.css";
+
 import { StyledComponentsRegistry } from './registry';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '@/app/theme';
