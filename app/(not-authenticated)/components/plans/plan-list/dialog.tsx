@@ -49,7 +49,7 @@ export const Dialog = ({
   items
 }: Props) => {
 
-  const handleConsultClick = (planName: string) => {
+  const handleOrderClick = (planName: string) => {
     const message = `Hola! Estoy interesado en el plan ${planName}.`;
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
@@ -90,11 +90,11 @@ export const Dialog = ({
       <DialogActions>
         <Stack direction={'row'} justifyContent={'center'} width={'100%'}>
           <Button
-            onClick={() => handleConsultClick(title!)}
+            onClick={() => handleOrderClick(title!)}
             color="secondary"
             variant='contained'
           >
-            Consultar
+            Contratar
           </Button>
         </Stack>
       </DialogActions>
