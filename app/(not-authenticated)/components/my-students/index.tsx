@@ -50,8 +50,14 @@ export const MyStudents = () => {
             $bgImg={option.bgImg}
             justifyContent={'flex-end'}
             mr={isMobile ? 1 : 2}
+            borderRadius={3}
+            overflow={'hidden'}
           >
-            <Stack bgcolor={theme.palette.primary.main} p={isMobile ? 2 : 4} spacing={2}>
+            <Stack
+              bgcolor={theme.palette.primary.main}
+              p={isMobile ? 2 : 4}
+              spacing={2}
+            >
               <Typography variant={isMobile ? 'body2' : 'body1'} fontStyle={'italic'}>
                 {option.text}
               </Typography>

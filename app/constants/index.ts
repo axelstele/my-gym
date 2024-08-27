@@ -1,4 +1,5 @@
 export const phoneNumber = '+542914602205';
+export const instagramUrl = 'https://www.instagram.com/may.fitcoach';
 
 export const responsiveCarousel = {
   desktop: {

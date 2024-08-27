@@ -4,7 +4,7 @@ import { useIsMobile } from '@/app/hooks';
 import { Box, Grid, Stack, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import styled from 'styled-components';
-import { phoneNumber } from '@/app/constants';
+import { phoneNumber, instagramUrl } from '@/app/constants';
 import { options } from './options';
 
 const StyledStack = styled(Stack)`
@@ -20,7 +20,7 @@ export function Contact() {
   const isMobile = useIsMobile();
 
   const handleInstagramClick = () => {
-    window.open('https://www.instagram.com/', '_blank');
+    window.open(instagramUrl, '_blank');
   }
 
   const handleWhatsappClick = () => {
