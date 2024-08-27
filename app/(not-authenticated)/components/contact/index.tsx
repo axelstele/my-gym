@@ -84,7 +84,7 @@ export function Contact() {
               onClick={() => handleClick(option.type)}
             >
               {option.icon}
-              <Typography textAlign={'center'}>
+              <Typography textAlign={'center'} fontWeight='bold'>
                 {option.text}
               </Typography>
             </StyledItemStack>

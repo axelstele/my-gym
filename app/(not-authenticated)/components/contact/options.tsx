@@ -20,13 +20,13 @@ export const options = [
   {
     id: 3,
     icon: <WhatsAppIcon fontSize='large' />,
-    text: phoneNumber,
+    text: phoneNumber.replace('+54', ''),
     type: 'whatsapp'
   },
   {
     id: 4,
     icon: <InstagramIcon fontSize='large' />,
-    text: '/mayra',
+    text: '/may.fitcoach',
     type: 'instagram'
   }
 ]
