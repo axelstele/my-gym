@@ -1,13 +1,18 @@
 "use client"
 
 import React from 'react';
-import { Button, Stack, styled, Typography } from '@mui/material';
+import { Button, Stack, styled } from '@mui/material';
 import { useIsMobile } from '@/app/hooks';
 import { AboutMe, Plans, Contact, MyStudents } from './components';
+import { ImageTitle } from '../components';
 
 const StyledStack = styled(Stack)(({ theme }) => ({
-  background: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('background.jpeg') no-repeat center center / cover`,
-  minHeight: `calc(100vh - ${theme.spacing(7)})`
+  background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('background-mobile.jpeg') no-repeat center center / cover`,
+  minHeight: `calc(100vh - ${theme.spacing(7)})`,
+
+  [theme.breakpoints.up('sm')]: {
+    background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('background-desktop.jpeg') no-repeat center center / cover`,
+  }
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -28,9 +33,15 @@ export default function HomePage() {
         spacing={4}
         px={isMobile ? 2 : 30}
       >
-        <Typography variant={isMobile ? "h4" : "h1"} fontStyle='italic' fontWeight={700} lineHeight={1} textAlign={'center'}>
+        <ImageTitle
+          variant={isMobile ? "h4" : "h1"}
+          fontStyle='italic'
+          fontWeight={700}
+          lineHeight={1}
+          textAlign={'center'}
+        >
           PREPARATE PARA CONSEGUIR TU MEJOR VERSIÓN
-        </Typography>
+        </ImageTitle>
         <StyledButton variant='contained' color='primary'>
           EMPEZÁ HOY
         </StyledButton>

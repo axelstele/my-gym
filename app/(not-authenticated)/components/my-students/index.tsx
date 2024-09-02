@@ -4,6 +4,7 @@ import { Stack, StackProps, Typography, useTheme } from "@mui/material"
 import Carousel from "react-multi-carousel";
 import { options } from "./options";
 import styled from "styled-components";
+import { Title } from "@/app/components";
 
 type CustomStack = StackProps & {
   $bgImg: string;
@@ -34,9 +35,15 @@ export const MyStudents = () => {
       spacing={isMobile ? 4 : 8}
       p={isMobile ? 2 : 8}
     >
-      <Typography variant={isMobile ? 'h5' : 'h2'} fontWeight={600} fontStyle={'italic'} color={theme.palette.secondary.main} textAlign={'center'}>
+      <Title
+        variant={isMobile ? 'h5' : 'h2'}
+        fontWeight={600}
+        fontStyle={'italic'}
+        color={theme.palette.secondary.main}
+        textAlign={'center'}
+      >
         MIS ALUMNOS DICEN...
-      </Typography>
+      </Title>
       <Carousel
         draggable={isMobile}
         keyBoardControl

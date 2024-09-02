@@ -1,18 +1,17 @@
 export const mainOptions = [
   {
     title: 'VAMOS AL GIMNASIO',
-    bgImg: 'background.jpeg'
+    bgImg: 'go-to-gym.jpeg'
   },
   {
     title: 'ENTRENÁ DESDE CASA',
-    bgImg: 'background.jpeg'
+    bgImg: 'train-from-home.jpeg'
   },
   {
     title: 'ENTRENAMIENTO PRESENCIAL',
-    bgImg: 'background.jpeg'
+    bgImg: 'face-to-face-training.jpeg'
   }
 ]
-
 
 export type Plan = {
   title: string;
@@ -26,7 +25,7 @@ export type Plan = {
 export const secondaryOptions: Plan[] = [
   {
     title: 'NEW ME',
-    bgImg: 'background.jpeg',
+    bgImg: 'new-me.jpeg',
     dialogContent: {
       subtitle: 'Si estás comenzando a entrenar, este plan es ideal para vos.',
       items: [
@@ -41,7 +40,7 @@ export const secondaryOptions: Plan[] = [
   },
   {
     title: 'BOOTY UP',
-    bgImg: 'background.jpeg',
+    bgImg: 'booty-up.jpeg',
     dialogContent: {
       subtitle: 'Modelá tu figura, levantá y redondeá tus glúteos.',
       items: [
@@ -56,7 +55,7 @@ export const secondaryOptions: Plan[] = [
   },
   {
     title: 'STRONG GIRL',
-    bgImg: 'background.jpeg',
+    bgImg: 'strong-girl.jpeg',
     dialogContent: {
       subtitle: 'Si buscás una transformación de cuerpo completo, este es tu plan ideal para volverte más fuerte.',
       items: [
@@ -69,3 +68,28 @@ export const secondaryOptions: Plan[] = [
     }
   }
 ]
+
+export const faceToFaceTraining = {
+  title: 'ENTRENAMIENTO PRESENCIAL',
+  bgImg: 'strong-girl.jpeg',
+  dialogContent: {
+    subtitle: 'Entrenamiento SEMI PERSONALIZADO.',
+    items: [
+      'Adaptado a tus objetivos y necesidades',
+      'Seguimiento constante. Sentite cómodo y cuidado a la hora de entrenar',
+      'Preparate para buscar tu mejor versión',
+    ]
+  }
+}
+
+export const nutritionalPlan = {
+  title: 'PLAN DE NUTRICIÓN ONLINE',
+  bgImg: 'strong-girl.jpeg',
+  dialogContent: {
+    items: [
+      'Acorde a tus objetivos, gustos, preferencias y horarios',
+      'Armamos tu plan hecho a medida, acompañando al entrenamiento',
+      'Consultas de seguimiento para realizar los ajustes necesarios',
+    ]
+  }
+}

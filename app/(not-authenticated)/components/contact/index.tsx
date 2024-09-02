@@ -6,9 +6,10 @@ import { useTheme } from '@mui/material/styles';
 import styled from 'styled-components';
 import { phoneNumber, instagramUrl } from '@/app/constants';
 import { options } from './options';
+import { ImageTitle } from '@/app/components';
 
 const StyledStack = styled(Stack)`
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background.jpeg') no-repeat center center / cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background-desktop.jpeg') no-repeat center center / cover;
 `
 
 const StyledItemStack = styled(Stack)`
@@ -52,7 +53,7 @@ export function Contact() {
           p={isMobile ? 2 : 8}
           justifyContent={'center'}
         >
-          <Typography
+          <ImageTitle
             variant={isMobile ? 'h5' : 'h3'}
             fontWeight={600}
             fontStyle={'italic'}
@@ -61,7 +62,7 @@ export function Contact() {
             color={theme.palette.primary.main}
           >
             CONTACTAME Y CHARLEMOS
-          </Typography>
+          </ImageTitle>
         </Stack>
       </StyledStack>
       <Grid

@@ -1,9 +1,16 @@
 'use client';
 
+import { Title } from '@/app/components';
 import { useIsMobile } from '@/app/hooks';
 import { Box, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import Image from 'next/image';
+import styled from 'styled-components';
+
+const StyledImage = styled(Image)`
+  object-fit: cover;
+  border-radius: 12px;
+`
 
 export function AboutMe() {
   const theme = useTheme();
@@ -16,9 +23,15 @@ export function AboutMe() {
     >
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
-          <Typography color={theme.palette.secondary.main} variant={isMobile ? 'h4' : 'h2'} fontWeight={600} fontStyle={'italic'} gutterBottom>
+          <Title
+            color={theme.palette.secondary.main}
+            variant={isMobile ? 'h4' : 'h2'}
+            fontWeight={600}
+            fontStyle={'italic'}
+            gutterBottom
+          >
             HOLA, SOY MAY!
-          </Typography>
+          </Title>
           <Typography gutterBottom>
             Bienvenido a nuestro gimnasio, donde tu bienestar y salud son nuestra prioridad. Soy May, y estoy aquí para ayudarte a alcanzar tus metas de fitness con entusiasmo y dedicación. Con años de experiencia en el mundo del ejercicio y la nutrición, mi objetivo es ofrecerte un espacio motivador y profesional para que te sientas inspirado y apoyado en cada paso de tu viaje hacia una vida más saludable.
           </Typography>
@@ -31,28 +44,42 @@ export function AboutMe() {
         </Grid>
         <Grid item xs={12} md={6}>
           <Grid container spacing={2}>
-            <Grid item xs={12} md={6} height={500}>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              position='relative'
+              height={600}
+            >
               <Box
                 position={'relative'}
                 width={'100%'}
                 height={'100%'}
               >
-                <Image
-                  src="/about-me-1.jpg"
+                <StyledImage
+                  src="/about-me-1.jpeg"
                   alt="Picture of the author 1"
                   fill
                   sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </Box>
             </Grid>
-            <Grid item xs={12} md={6} height={500} mt={isMobile ? 0 : 24}>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              mt={isMobile ? 0 : 32}
+              position='relative'
+              height={600}
+            >
               <Box
                 position={'relative'}
                 width={'100%'}
                 height={'100%'}
+                
               >
-                <Image
-                  src="/about-me-2.jpg"
+                <StyledImage
+                  src="/about-me-2.jpeg"
                   alt="Picture of the author 2"
                   fill
                   sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
