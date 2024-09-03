@@ -1,7 +1,7 @@
 import { useIsMobile } from "@/app/hooks"
 import { Grid, Stack, useTheme } from "@mui/material"
 import { Card } from "../components/card"
-import { Dialog } from "../training/plan-list/dialog"
+import { Dialog } from "../components/dialog"
 import { useState } from "react"
 import { nutritionalPlan } from "../options"
 import { Title } from "@/app/components"

@@ -1,6 +1,7 @@
 import { Dialog as MuiDialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button, styled, List, ListItem, ListItemText, ListItemIcon, Stack } from "@mui/material";
 import CheckIcon from '@mui/icons-material/Check';
 import { phoneNumber } from "@/app/constants";
+import { useIsMobile } from "@/app/hooks";
 
 type Props = {
   open: boolean;
@@ -48,6 +49,7 @@ export const Dialog = ({
   subtitle,
   items
 }: Props) => {
+  const isMobile = useIsMobile();
 
   const handleOrderClick = (planName: string) => {
     const message = `Hola! Estoy interesado en el plan ${planName}.`;
@@ -68,7 +70,7 @@ export const Dialog = ({
       <StyledDialogTitle
         textAlign={'center'}
         fontWeight={'bold'}
-        variant='h4'
+        variant={isMobile ? 'h6' : 'h4'}
       >
         {title}
       </StyledDialogTitle>

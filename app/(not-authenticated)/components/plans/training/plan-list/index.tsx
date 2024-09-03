@@ -2,8 +2,7 @@ import { useIsMobile } from "@/app/hooks"
 import { Box, Grid, Stack, Typography, useTheme } from "@mui/material"
 import { faceToFaceTraining, Plan, secondaryOptions } from "../../options";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import { Dialog } from "./dialog";
-import styled from "styled-components";
+import { Dialog } from "../../components/dialog";
 import { Card } from "../../components";
 import { Title } from "@/app/components";
 
