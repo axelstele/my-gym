@@ -32,14 +32,14 @@ export function AboutMe() {
           >
             HOLA, SOY MAY!
           </Title>
-          <Typography gutterBottom>
-            Bienvenido a nuestro gimnasio, donde tu bienestar y salud son nuestra prioridad. Soy May, y estoy aquí para ayudarte a alcanzar tus metas de fitness con entusiasmo y dedicación. Con años de experiencia en el mundo del ejercicio y la nutrición, mi objetivo es ofrecerte un espacio motivador y profesional para que te sientas inspirado y apoyado en cada paso de tu viaje hacia una vida más saludable.
+          <Typography variant={isMobile ? 'body1' : 'h6'} gutterBottom>
+            Bienvenidos a mi espacio, en donde busco acompañarte y guiarte en esto que tanto me apasiona. Desde muy pequeña, a los 18 años, comencé a interiorizarme en el mundo del fitness, capacitándome en muchas disciplinas. Durante años trabajé en gimnasios dando clases grupales, pero eso no me llenaba del todo. Fue así que hace cinco años decidí buscar mi camino y trabajar de manera independiente, pero esta vez con un enfoque más personalizado, porque creo que cada persona es única, con distintas necesidades y objetivos.
           </Typography>
-          <Typography gutterBottom>
-            En nuestro gimnasio, encontrarás una amplia variedad de clases y entrenamientos personalizados diseñados para adaptarse a tus necesidades y niveles. Desde sesiones de entrenamiento intensivo hasta clases de yoga relajantes, estamos aquí para ofrecerte una experiencia integral que te ayudará a sentirte mejor y más fuerte.
+          <Typography variant={isMobile ? 'body1' : 'h6'} gutterBottom>
+            En continua capacitación para brindarles lo mejor como entrenadora personal y preparadora física.
           </Typography>
-          <Typography gutterBottom>
-            ¡Únete a nuestra comunidad y empieza tu transformación hoy! Juntos, haremos que tus objetivos de fitness se conviertan en una realidad.
+          <Typography variant={isMobile ? 'body1' : 'h6'} gutterBottom>
+            Te invito a recorrer juntos este hermoso camino para lograr el cambio que tanto querés alcanzar!
           </Typography>
         </Grid>
         <Grid item xs={12} md={6}>
@@ -76,7 +76,7 @@ export function AboutMe() {
                 position={'relative'}
                 width={'100%'}
                 height={'100%'}
-                
+
               >
                 <StyledImage
                   src="/about-me-2.jpeg"

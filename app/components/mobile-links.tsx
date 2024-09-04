@@ -41,17 +41,11 @@ export function MobileLinks() {
         <MenuItem onClick={handleClose} component={Link} href="/#home">
           Home
         </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} href="/#about-me">
-          Sobre mí
-        </MenuItem>
         <MenuItem component={Link} href="/#training-plans">
           Planes de entrenamiento
         </MenuItem>
         <MenuItem onClick={handleClose} component={Link} href="/#nutrition-plans">
           Planes nutricionales
-        </MenuItem>
-        <MenuItem onClick={handleClose} component={Link} href="/#my-students">
-          Mis alumnos
         </MenuItem>
         <MenuItem onClick={handleClose} component={Link} href="/#contact">
           Contacto

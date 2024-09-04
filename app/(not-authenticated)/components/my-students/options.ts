@@ -1,30 +1,20 @@
 export const options = [
   {
     id: 1,
-    text: '"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."',
-    name: 'Dolores Blanca',
-    age: 31,
-    bgImg: 'background-desktop.jpeg'
+    text: '"Algo que encontre en el gym, que no es para nada fácil encontrar en Bahia, es la corrección de la técnica al momento de hacer los ejercicios. Algo fundamental al momento de entrenar. Además de la buena energía de May y compañeras."',
+    name: 'Juana',
+    bgImg: 'anonymous-girl.jpg'
   },
   {
     id: 2,
-    text: '"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."',
-    name: 'Lauren Cross',
-    age: 28,
-    bgImg: 'background-desktop.jpeg'
+    text: '"Qué lindo encontrar una profe tan copada. Gracias por tu paciencia y motivación cuando creo que no voy a poder. Sos la mejor."',
+    name: 'Gise',
+    bgImg: 'anonymous-girl.jpg'
   },
   {
     id: 3,
-    text: '"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."',
-    name: 'Tomás Cano',
-    age: 44,
-    bgImg: 'background-desktop.jpeg'
-  },
-  {
-    id: 4,
-    text: '"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."',
-    name: 'Axel Stele',
-    age: 32,
-    bgImg: 'background-desktop.jpeg'
+    text: '"Estoy entrenando a distancia y es increíble lo cuidada que me siento. Muy contenta con los cambios, en todo sentido."',
+    name: 'Mica',
+    bgImg: 'anonymous-girl.jpg'
   }
 ]
