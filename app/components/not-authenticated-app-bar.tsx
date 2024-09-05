@@ -1,7 +1,8 @@
-import { AppBar, Button, ButtonProps, styled, Toolbar } from "@mui/material";
+import { AppBar, Button, ButtonProps, Stack, styled, Toolbar } from "@mui/material";
 import { useIsMobile } from '@/app/hooks';
 import { DesktopLinks, MobileLinks } from '@/app/components';
 import Link from "next/link";
+import Image from "next/image";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   justifyContent: 'space-between',
@@ -26,9 +27,17 @@ export const NotAuthenticatedAppBar = () => {
   return (
     <AppBar position='sticky'>
       <StyledToolbar>
-        <StyledButton component={Link} href="/">
-          MAYFITCOACH
-        </StyledButton>
+        <Stack direction={'row'} spacing={2}>
+          <Image
+            src="/logo.svg"
+            alt="logo"
+            height={40}
+            width={40}
+          />
+          <StyledButton component={Link} href="/">
+            MAYFITCOACH
+          </StyledButton>
+        </Stack>
         {isMobile ? (
           <MobileLinks />
         ) : (
