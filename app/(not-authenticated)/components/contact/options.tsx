@@ -14,7 +14,7 @@ export const options = [
   {
     id: 2,
     icon: <EmailIcon fontSize='large' />,
-    text: 'mayra@hotmail.com',
+    text: 'maydottori@gmail.com',
     type: 'email'
   },
   {
