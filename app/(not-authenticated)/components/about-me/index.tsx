@@ -57,8 +57,8 @@ export function AboutMe() {
                 height={'100%'}
               >
                 <StyledImage
-                  src="/about-me-1.jpeg"
-                  alt="Picture of the author 1"
+                  src="/about-me-1.jpg"
+                  alt="About me 1"
                   fill
                   sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
@@ -79,8 +79,8 @@ export function AboutMe() {
 
               >
                 <StyledImage
-                  src="/about-me-2.jpeg"
-                  alt="Picture of the author 2"
+                  src="/about-me-2.jpg"
+                  alt="About me 2"
                   fill
                   sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />

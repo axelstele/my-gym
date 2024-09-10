@@ -9,7 +9,7 @@ import { options } from './options';
 import { ImageTitle } from '@/app/components';
 
 const StyledStack = styled(Stack)`
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background-desktop.jpeg') no-repeat center center / cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('contact-me.jpg') no-repeat center center / cover;
 `
 
 const StyledItemStack = styled(Stack)`

@@ -28,7 +28,7 @@ export const Card = ({ title, bgImg, onClick }: Props) => {
 
   return (
     <StyledStack
-      height={isMobile ? 500 : 900}
+      height={isMobile ? 500 : 700}
       alignItems={'center'}
       justifyContent={'center'}
       $bgImg={bgImg}
