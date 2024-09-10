@@ -1,15 +1,15 @@
 export const mainOptions = [
   {
     title: 'VAMOS AL GIMNASIO',
-    bgImg: 'go-to-gym.jpg'
+    bgImg: 'go-to-gym.JPG'
   },
   {
     title: 'ENTRENÁ DESDE CASA',
-    bgImg: 'train-from-home.jpg'
+    bgImg: 'train-from-home.JPG'
   },
   {
     title: 'ENTRENAMIENTO PRESENCIAL',
-    bgImg: 'face-to-face-training.jpg'
+    bgImg: 'face-to-face-training.JPG'
   }
 ]
 
@@ -25,7 +25,7 @@ export type Plan = {
 export const secondaryOptions: Plan[] = [
   {
     title: 'NEW ME',
-    bgImg: 'new-me.jpg',
+    bgImg: 'new-me.JPG',
     dialogContent: {
       subtitle: 'Si estás comenzando a entrenar, este plan es ideal para vos.',
       items: [
@@ -40,7 +40,7 @@ export const secondaryOptions: Plan[] = [
   },
   {
     title: 'BOOTY UP',
-    bgImg: 'booty-up.jpg',
+    bgImg: 'booty-up.JPG',
     dialogContent: {
       subtitle: 'Modelá tu figura, levantá y redondeá tus glúteos.',
       items: [
@@ -55,7 +55,7 @@ export const secondaryOptions: Plan[] = [
   },
   {
     title: 'STRONG GIRL',
-    bgImg: 'strong-girl.jpg',
+    bgImg: 'strong-girl.JPG',
     dialogContent: {
       subtitle: 'Si buscás una transformación de cuerpo completo, este es tu plan ideal para volverte más fuerte.',
       items: [
@@ -71,7 +71,7 @@ export const secondaryOptions: Plan[] = [
 
 export const faceToFaceTraining = {
   title: 'ENTRENAMIENTO PRESENCIAL',
-  bgImg: 'strong-girl.jpg',
+  bgImg: 'strong-girl.JPG',
   dialogContent: {
     subtitle: 'Entrenamiento SEMI PERSONALIZADO.',
     items: [
@@ -84,7 +84,7 @@ export const faceToFaceTraining = {
 
 export const nutritionalPlan = {
   title: 'PLAN DE NUTRICIÓN ONLINE',
-  bgImg: 'strong-girl.jpg',
+  bgImg: 'strong-girl.JPG',
   dialogContent: {
     items: [
       'Acorde a tus objetivos, gustos, preferencias y horarios',

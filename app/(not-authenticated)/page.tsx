@@ -7,11 +7,11 @@ import { AboutMe, Plans, Contact, MyStudents } from './components';
 import { ImageTitle } from '../components';
 
 const StyledStack = styled(Stack)(({ theme }) => ({
-  background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('background-mobile.jpg') no-repeat center center / cover`,
+  background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('background-mobile.JPG') no-repeat center center / cover`,
   minHeight: `calc(100vh - ${theme.spacing(7)})`,
 
   [theme.breakpoints.up('sm')]: {
-    background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('background-desktop.jpg') no-repeat center center / cover`,
+    background: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('background-desktop.JPG') no-repeat center center / cover`,
   }
 }));
 
