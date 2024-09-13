@@ -52,13 +52,13 @@ export default function PlansPage() {
   }, []);
 
   const columns: GridColDef[] = [
-    { field: 'name', headerName: 'Nombre', width: 200 },
-    { field: 'email', headerName: 'E-mail', width: 200 },
+    { field: 'name', headerName: 'Nombre', flex: 1 },
+    { field: 'email', headerName: 'E-mail', flex: 1 },
     {
       field: 'actions',
       type: 'actions',
       headerName: 'Acciones',
-      width: 150,
+      flex: 1,
       getActions: (params) => [
         <GridActionsCellItem
           key={`edit-${params.id}`}
@@ -88,8 +88,10 @@ export default function PlansPage() {
     }
   ];
 
+  console.log('e')
+
   return (
-    <Box sx={{ height: 500, width: '100%' }}>
+    <>
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
         <Typography variant="h6" gutterBottom>
           Usuarios
@@ -103,7 +105,6 @@ export default function PlansPage() {
         columns={columns}
         loading={isLoading}
       />
-
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Agregar usuario</DialogTitle>
         <DialogContent>
@@ -139,6 +140,6 @@ export default function PlansPage() {
           </Button>
         </DialogActions>
       </Dialog>
-    </Box>
+    </>
   );
 }

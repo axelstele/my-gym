@@ -19,6 +19,7 @@ if (!admin.apps.length) {
 
 const firestore = admin.firestore();
 const adminAuth = admin.auth();
+const verifyIdToken = (token: string) => admin.auth().verifyIdToken(token);
 
-export { firestore, adminAuth };
+export { firestore, adminAuth, verifyIdToken };
 

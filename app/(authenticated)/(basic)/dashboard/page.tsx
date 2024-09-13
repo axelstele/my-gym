@@ -1,7 +1,6 @@
 import { Container, Paper, Typography } from "@mui/material";
-import { useEffect } from "react";
 
-export default function DashboardPage() {
+export default function BasicDashboardPage() {
 
   return (
     <Container>

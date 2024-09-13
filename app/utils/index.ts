@@ -1,1 +1,2 @@
-export * from './firebase-admin-config';
+export * from './firebase-backend-config';
+export * from './firebase-client-config'

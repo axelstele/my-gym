@@ -8,15 +8,15 @@ type User = {
   email: string;
 }
 
-
 export async function GET() {
   try {
-    const snapshot = await firestore.collection('users').get();
+    const snapshot = await firestore.collection('users')
+      .where('role', '==', 'basic')
+      .get();
 
     const users: User[] = [];
 
     for (const item of snapshot.docs) {
-      // const userAuthenticationId = item.data().
       const authUserData = await adminAuth.getUser(item.data().userAuthenticationId);
 
       users.push({
@@ -25,13 +25,12 @@ export async function GET() {
         email: authUserData.email!,
       })
     }
-    
+
     return NextResponse.json(users);
   } catch (error) {
     return NextResponse.error();
   }
 }
-
 
 export async function POST(req: NextRequest) {
   try {
@@ -47,13 +46,13 @@ export async function POST(req: NextRequest) {
     const userRecord = await adminAuth.createUser({
       displayName: [firstName, lastName].join(' '),
       email,
-      password: 'test123'
+      password: `${firstName}!123` 
     });
 
     // Add the user to Firestore
     const newUserRef = await firestore.collection('users').add({
       userAuthenticationId: userRecord.uid,
-      role: 'user',
+      role: 'basic',
     });
 
     // Return success response

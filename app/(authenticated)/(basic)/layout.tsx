@@ -1,12 +1,12 @@
 "use client"
 
-import { AdminUserDrawer } from '@/app/components';
+import { BasicUserDrawer } from '@/app/components';
 import { Container, Stack, styled } from '@mui/material';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
   display: 'flex',
-  // maxWidth: '100vw !important',
-  // padding: '0 !important',
+  maxWidth: '100vw !important',
+  padding: '0 !important',
 }));
 
 export default function Layout({
@@ -16,7 +16,7 @@ export default function Layout({
 }) {
   return (
     <>
-      <AdminUserDrawer />
+      <BasicUserDrawer />
       <StyledContainer>
         <Stack flexGrow={1}>
           {children}

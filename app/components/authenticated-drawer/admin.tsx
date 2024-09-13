@@ -6,7 +6,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -17,8 +16,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PeopleIcon from '@mui/icons-material/People';
-import ListIcon from '@mui/icons-material/List';
 import { useRouter } from 'next/navigation';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const drawerWidth = 240;
 
@@ -71,7 +70,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export function AuthenticatedDrawer() {
+export function AdminUserDrawer() {
   const theme = useTheme();
   const router = useRouter();
 
@@ -83,6 +82,15 @@ export function AuthenticatedDrawer() {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleSignOut = async () => {
+    try {
+      // await signOut(clientAuth); // Realiza la operación de cierre de sesión
+      router.push('/login'); // Redirige a la página de inicio de sesión o cualquier otra página
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
   };
 
   return (
@@ -99,9 +107,6 @@ export function AuthenticatedDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Persistent drawer
-          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -132,16 +137,19 @@ export function AuthenticatedDrawer() {
               <ListItemText primary='Usuarios' />
             </ListItemButton>
           </ListItem>
+        </List>
+        <Divider />
+        <Box sx={{ flexGrow: 1 }} />
+        <List>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => router.push('/admin/plans')}>
+            <ListItemButton onClick={handleSignOut}>
               <ListItemIcon>
-                <ListIcon />
+                <LogoutIcon />
               </ListItemIcon>
-              <ListItemText primary='Planes' />
+              <ListItemText primary='Cerrar sesión' />
             </ListItemButton>
           </ListItem>
         </List>
-        <Divider />
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
