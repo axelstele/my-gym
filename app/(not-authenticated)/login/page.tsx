@@ -4,11 +4,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { TextField, Button, Typography, Container } from '@mui/material';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import axios from 'axios';
-import { clientAuth } from '@/app/utils';
-
-
+import { useAuth } from '@/app/providers/auth-provider';
 
 interface IFormInput {
   email: string;
@@ -17,9 +14,11 @@ interface IFormInput {
 
 const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
+  const auth = useAuth();
+  const router = useRouter();
+
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     setLoading(true);
@@ -33,17 +32,15 @@ const LoginPage = () => {
       });
 
       const { role } = response.data;
+      sessionStorage.setItem('token', response.data.token);
+      auth.setUser(response.data);
 
       if (role === 'admin') {
         router.push('/admin/dashboard')
         return;
       }
 
-      router.push('/plans')
-
-      // sessionStorage.setItem('firebaseIdToken', result.idToken);
-      // sessionStorage.setItem('firebaseUid', result.uid);
-      // router.push('/dashboard');
+      router.push('/plans');
     } catch (error: any) {
       console.error('Error logging in:', error);
       setErrorMessage(error.message || 'An error occurred');

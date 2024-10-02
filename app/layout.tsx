@@ -9,6 +9,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '@/app/theme';
 import { ToastContainer } from 'react-toastify';
 import { Montserrat } from 'next/font/google'
+import { AuthProvider } from './providers/auth-provider';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -25,7 +26,9 @@ export default function RootLayout({
       <body className={montserrat.className}>
         <ThemeProvider theme={theme}>
           <StyledComponentsRegistry>
-            {children}
+            <AuthProvider>
+              {children}
+            </AuthProvider>
             <ToastContainer />
           </StyledComponentsRegistry>
         </ThemeProvider>

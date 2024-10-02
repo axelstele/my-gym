@@ -7,7 +7,7 @@ export const useDeleteUser = () => {
   const deleteUser = async (id: string) => {
     setIsLoading(true);
     try {
-      await axios.delete(`/api/user/${id}`);
+      await axios.delete(`/api/users/${id}`);
     } catch (error) {
       console.error('Failed to delete user', error);
     } finally {

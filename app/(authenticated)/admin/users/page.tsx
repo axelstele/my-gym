@@ -1,22 +1,44 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import { useDeleteUser, useAddUser, useGetUsers } from "./hooks";
+import { useDeleteUser, useAddUser, useGetUsers, useEditUser } from "./hooks";
 import { DataGrid, GridActionsCellItem, GridColDef, GridRowId } from "@mui/x-data-grid";
-import { Box, IconButton, Tooltip, Typography, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material";
+import { Box, IconButton, Tooltip, Typography, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, MenuItem } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { toast } from 'react-toastify';
+import { useAuth } from "@/app/providers/auth-provider";
 
-export default function PlansPage() {
+export default function UsersPage() {
+  const auth = useAuth();
   const { users, fetchUsers, isLoading } = useGetUsers();
   const { deleteUser } = useDeleteUser();
   const { addUser } = useAddUser();
+  const { editUser } = useEditUser();
   const [open, setOpen] = useState(false);
-  const [newUser, setNewUser] = useState({ firstName: '', lastName: '', email: '' });
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentUserId, setCurrentUserId] = useState<GridRowId | null>(null);
+  const [newUser, setNewUser] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    role: ''
+  });
 
   const handleEdit = (id: GridRowId) => {
-    // Manejar la edición del plan
+    const userToEdit = users.find((user) => user.id === id);
+    const name = userToEdit?.name.split(' ');
+    if (userToEdit) {
+      setNewUser({
+        ...userToEdit,
+        firstName: name?.[0] ?? '',
+        lastName: name?.[1] ?? '',
+        email: userToEdit.email,
+      });
+      setCurrentUserId(id);
+      setIsEditing(true);
+      setOpen(true);
+    }
   };
 
   const handleDelete = async (id: GridRowId) => {
@@ -26,6 +48,9 @@ export default function PlansPage() {
   };
 
   const handleAddUser = () => {
+    setNewUser({ firstName: '', lastName: '', email: '', role: '' }); // Limpiar campos
+    setCurrentUserId(null);
+    setIsEditing(false);
     setOpen(true);
   };
 
@@ -34,15 +59,21 @@ export default function PlansPage() {
   };
 
   const handleSave = async () => {
-    const { firstName, lastName, email } = newUser;
+    const { firstName, lastName, email, role } = newUser;
 
     if (!firstName || !lastName || !email) {
       toast.error('Por favor complete todos los campos');
       return;
     }
 
-    await addUser({ firstName, lastName, email });
-    toast.success('Usuario agregado correctamente');
+    if (isEditing && currentUserId) {
+      await editUser(currentUserId.toString(), { firstName, lastName, email, role });
+      toast.success('Usuario editado correctamente');
+    } else {
+      await addUser({ firstName, lastName, email, role });
+      toast.success('Usuario agregado correctamente');
+    }
+
     setOpen(false);
     await fetchUsers();
   };
@@ -88,8 +119,6 @@ export default function PlansPage() {
     }
   ];
 
-  console.log('e')
-
   return (
     <>
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
@@ -106,7 +135,7 @@ export default function PlansPage() {
         loading={isLoading}
       />
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Agregar usuario</DialogTitle>
+        <DialogTitle>{isEditing ? 'Editar usuario' : 'Agregar usuario'}</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
@@ -130,13 +159,31 @@ export default function PlansPage() {
             value={newUser.email}
             onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
           />
+          {auth.user?.role === 'superadmin' && (
+            <TextField
+              margin="dense"
+              label="Role"
+              fullWidth
+              select
+              value={newUser.role}
+              onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
+              defaultValue={'admin'}
+            >
+              <MenuItem value="admin">
+                Admin
+              </MenuItem>
+              <MenuItem value="basic">
+                Básico
+              </MenuItem>
+            </TextField>
+          )}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="secondary">
             Cancelar
           </Button>
-          <Button onClick={handleSave} color="primary">
-            Guardar
+          <Button onClick={handleSave} color="secondary">
+            {isEditing ? 'Guardar cambios' : 'Guardar'}
           </Button>
         </DialogActions>
       </Dialog>

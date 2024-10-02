@@ -18,6 +18,7 @@ import ListItemText from '@mui/material/ListItemText';
 import PeopleIcon from '@mui/icons-material/People';
 import { useRouter } from 'next/navigation';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useAuth } from '@/app/providers/auth-provider';
 
 
 const drawerWidth = 240;
@@ -74,6 +75,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export function BasicUserDrawer() {
   const theme = useTheme();
   const router = useRouter();
+  const auth = useAuth();
 
   const [open, setOpen] = React.useState(false);
 
@@ -86,12 +88,9 @@ export function BasicUserDrawer() {
   };
 
   const handleSignOut = async () => {
-    try {
-      // await signOut(clientAuth); // Realiza la operación de cierre de sesión
-      router.push('/login'); // Redirige a la página de inicio de sesión o cualquier otra página
-    } catch (error) {
-      console.error('Error signing out:', error);
-    }
+    sessionStorage.removeItem('token');
+    auth.setUser(null);
+    router.push('/login');
   };
 
   return (

@@ -13,6 +13,8 @@ export async function POST(req: NextRequest) {
 
     const credentials = await signInWithEmailAndPassword(clientAuth, email, password);
     const user = credentials.user;
+    const idToken = await user.getIdToken();
+
 
     const snapshot = await firestore.collection('users')
       .where('userAuthenticationId', '==', user.uid)
@@ -27,6 +29,7 @@ export async function POST(req: NextRequest) {
 
     const userData = {
       id: userInfo.id,
+      token: idToken,
       ...userInfo.data(),
     };
 

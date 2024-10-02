@@ -8,14 +8,24 @@ type User = {
   email: string;
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
+    // Obtener el rol de la query string
+    const role = req.nextUrl.searchParams.get('role');
+
+    // Verificar que se haya proporcionado un rol
+    if (!role) {
+      return NextResponse.json({ error: 'Role is required' }, { status: 400 });
+    }
+
+    // Obtener usuarios con el rol proporcionado
     const snapshot = await firestore.collection('users')
-      .where('role', '==', 'basic')
+      .where('role', '==', role)
       .get();
 
     const users: User[] = [];
 
+    // Recorrer los documentos y obtener la información de autenticación
     for (const item of snapshot.docs) {
       const authUserData = await adminAuth.getUser(item.data().userAuthenticationId);
 
@@ -23,11 +33,13 @@ export async function GET() {
         id: item.data().userAuthenticationId,
         name: authUserData.displayName!,
         email: authUserData.email!,
-      })
+      });
     }
 
+    // Devolver los usuarios filtrados por rol
     return NextResponse.json(users);
   } catch (error) {
+    console.error('Error fetching users:', error);
     return NextResponse.error();
   }
 }
@@ -46,13 +58,15 @@ export async function POST(req: NextRequest) {
     const userRecord = await adminAuth.createUser({
       displayName: [firstName, lastName].join(' '),
       email,
-      password: `${firstName}!123` 
+      password: `${firstName.toLowerCase()}!123`
     });
+
+    await adminAuth.generateEmailVerificationLink(email);
 
     // Add the user to Firestore
     const newUserRef = await firestore.collection('users').add({
       userAuthenticationId: userRecord.uid,
-      role: 'basic',
+      role,
     });
 
     // Return success response
