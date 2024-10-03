@@ -9,7 +9,7 @@ export const useAddUser = () => {
     try {
       await axios.post('/api/users', {
         ...user,
-        role: user.role ?? 'basic'
+        role: user.role || 'basic'
       });
     }
     catch (error) {
