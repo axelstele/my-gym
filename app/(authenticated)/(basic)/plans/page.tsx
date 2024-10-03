@@ -12,7 +12,7 @@ export default function PlansPage() {
     <Container maxWidth="md">
       <Box display="flex" flexDirection="column" alignItems="center" mb={4}>
         <Typography variant="h4" gutterBottom>
-          Listado de Archivos
+          En esta sección vas a encontrar información, recetas, tips sobre nutrición y entrenamiento
         </Typography>
         <List>
           {files.map((file, index) => (
