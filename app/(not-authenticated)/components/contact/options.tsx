@@ -8,7 +8,7 @@ export const options = [
   {
     id: 1,
     icon: <HomeIcon fontSize='large' />,
-    text: 'Calle XXXXXXXX 123, Bahía Blanca, CP 8000',
+    text: 'Cipolletti 1118, Bahía Blanca, CP 8000',
     type: 'address'
   },
   {
